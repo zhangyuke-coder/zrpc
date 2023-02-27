@@ -1,0 +1,16 @@
+/home/zyk/VcWorkplace/zrpc/build/CMakeFiles/test.dir
+/home/zyk/VcWorkplace/zrpc/build/CMakeFiles/edit_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/CMakeFiles/rebuild_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/CMakeFiles/zrpc.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/CMakeFiles/test.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/CMakeFiles/edit_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/CMakeFiles/rebuild_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/CMakeFiles/zrpc_base.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/CMakeFiles/test.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/CMakeFiles/edit_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/CMakeFiles/rebuild_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/tests/CMakeFiles/mutex_test.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/tests/CMakeFiles/log_test.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/tests/CMakeFiles/test.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/tests/CMakeFiles/edit_cache.dir
+/home/zyk/VcWorkplace/zrpc/build/zrpc/base/tests/CMakeFiles/rebuild_cache.dir

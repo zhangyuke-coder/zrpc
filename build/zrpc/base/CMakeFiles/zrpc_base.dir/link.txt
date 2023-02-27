@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libzrpc_base.a CMakeFiles/zrpc_base.dir/AsyncLogger.cc.o CMakeFiles/zrpc_base.dir/Logger.cc.o CMakeFiles/zrpc_base.dir/logging.cc.o CMakeFiles/zrpc_base.dir/logutil.cc.o CMakeFiles/zrpc_base.dir/mutex.cc.o
+/usr/bin/ranlib ../../lib/libzrpc_base.a
