@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../lib/libzrpc.a CMakeFiles/zrpc.dir/start.cc.o
-/usr/bin/ranlib ../lib/libzrpc.a
