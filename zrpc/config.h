@@ -6,9 +6,6 @@
 namespace zrpc {
 class Logger;
 
-
-extern Logger* gRpcLogger_;
-
 class Config {
 
  public:
