@@ -6,7 +6,6 @@
 #include "zrpc/start.h"
 #include "logutil.h"
 #include "Logger.h"
-
 namespace {
 std::string LogTypeToString(zrpc::LogType logtype) {
   switch (logtype) {
@@ -20,7 +19,6 @@ std::string LogTypeToString(zrpc::LogType logtype) {
 }
 }
 namespace zrpc {
-extern Logger::ptr gRpcLogger;
 AsyncLogger::AsyncLogger(const char* file_name, const char* file_path, int max_size, LogType logtype)
     : m_file_name(file_name), m_file_path(file_path), m_max_size(max_size), m_log_type(logtype) {
     int rt = sem_init(&m_semaphore, 0, 0);
@@ -160,17 +158,5 @@ void AsyncLogger::stop() {
   }
 }
 
-
-void Exit(int code) {
-  #ifdef DECLARE_MYSQL_PLUGIN
-  mysql_library_end();
-  #endif
-
-  printf("It's sorry to said we start TinyRPC server error, look up log file to get more deatils!\n");
-  gRpcLogger->flush();
-  pthread_join(gRpcLogger->getAsyncLogger()->m_thread, NULL);
-
-  _exit(code);
-}
 
 }

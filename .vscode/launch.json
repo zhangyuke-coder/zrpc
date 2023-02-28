@@ -48,7 +48,7 @@
                 // }
             ],
             //"internalConsoleoptions":"openOnSessionstart",    //不知道干嘛的
-            "preLaunchTask":"构建c2-test"    //执行program前需要执行的task，这里需要和task.json中要执行的task的label一致
+            "preLaunchTask":"zrpc"    //执行program前需要执行的task，这里需要和task.json中要执行的task的label一致
             //"preLaunchTask":""        //如果没有tasks.json，或者不需要执行前置task，则可以这样写，或不写这行。这种情况一般是你已经有了带调试信息的可执行文件，不要在再通过编译等操作得到了。
         }
     ]

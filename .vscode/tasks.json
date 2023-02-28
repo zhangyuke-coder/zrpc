@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "构建c2-test",
+            "label": "zrpc",
             "command": "./make.sh",
             "args": [
                 // "-fdiagnostics-color=always",

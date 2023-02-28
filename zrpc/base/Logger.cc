@@ -2,20 +2,10 @@
 #include <semaphore.h>
 #include <signal.h>
 #include "logging.h"
-namespace {
-extern zrpc::Logger::ptr gRpcLogger;
-void CoredumpHandler(int signal_no) {
-    // ErrorLog << "progress received invalid signal, will exit";
-    printf("progress received invalid signal, will exit\n");
-    gRpcLogger->flush();
-    pthread_join(gRpcLogger->getAsyncLogger()->m_thread, NULL);
-    pthread_join(gRpcLogger->getAsyncAppLogger()->m_thread, NULL);
+#include "logutil.h"
 
-    signal(signal_no, SIG_DFL);
-    raise(signal_no);
-}
+#include "logutil.h"
 
-}
 namespace zrpc {
 
 Logger::Logger() {
@@ -58,6 +48,7 @@ void Logger::init(const char* file_name, const char* file_path, int max_size, in
 void Logger::start() {
     // TimerEvent::ptr event = std::make_shared<TimerEvent>(m_sync_inteval, true, std::bind(&Logger::loopFunc, this));
     // Reactor::GetReactor()->getTimer()->addTimerEvent(event);
+    loopFunc();
 }
 
 

@@ -2,12 +2,14 @@
 
 
 namespace zrpc {
-logging::logging(LogEvent::ptr event)
+logging::logging(LogEvent* event)
     : m_event(event) {
 
 }
 logging::~logging() {
     m_event->log();
+    delete m_event;
+
 }
 
 

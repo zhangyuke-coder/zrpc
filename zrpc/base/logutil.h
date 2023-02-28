@@ -2,7 +2,7 @@
 #include <memory>
 #include <sstream>
 namespace zrpc{
-
+void CoredumpHandler(int signal_no);
 enum LogLevel {
 	DEBUG = 1,
 	INFO = 2,
