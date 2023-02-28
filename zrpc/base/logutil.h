@@ -2,6 +2,9 @@
 #include <memory>
 #include <sstream>
 namespace zrpc{
+
+
+pid_t gettid();
 void CoredumpHandler(int signal_no);
 enum LogLevel {
 	DEBUG = 1,
@@ -10,6 +13,10 @@ enum LogLevel {
 	ERROR = 4,
 	NONE = 5    // don't print log
 };
+LogLevel stringToLevel(const std::string& str);
+std::string levelToString(LogLevel level);
+
+
 enum LogType {
 	RPC_LOG = 1,
 	APP_LOG = 2,

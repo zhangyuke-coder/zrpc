@@ -6,20 +6,10 @@
 #include <functional>
 #include <unistd.h>
 #include <signal.h>
-namespace zrpc{
-static pthread_once_t once_control_ = PTHREAD_ONCE_INIT;
-zrpc::Logger* gRpcLogger_;
+#include "zrpc/config.h"
 
-void once_init()
-{
-
-  gRpcLogger_  = new zrpc::Logger();
-  
-}
-
-
-}
 namespace zrpc {
+extern Logger* gRpcLogger_;
 void CoredumpHandler(int signal_no) {
     // ErrorLog << "progress received invalid signal, will exit";
     printf("progress received invalid signal, will exit\n");
@@ -34,7 +24,7 @@ void CoredumpHandler(int signal_no) {
 
 static thread_local pid_t t_thread_id = 0;
 static pid_t g_pid = 0;
-namespace {
+
 
 
 
@@ -98,7 +88,7 @@ std::string LogTypeToString(LogType logtype) {
       return "";
   }
 }
-}
+
 
 
 LogEvent::LogEvent(LogLevel level, const char* file_name, 
@@ -116,11 +106,7 @@ LogEvent::~LogEvent(){
 
 void LogEvent::log() {
   m_ss << "\n";
-
-  pthread_once(&once_control_, once_init);
-
-  gRpcLogger_->init(m_file_name, "", 1000000,2);
-  if (m_type == zrpc::RPC_LOG) {
+  if (m_type == RPC_LOG) {
     gRpcLogger_->pushRpcLog(m_ss.str());
   } else if (m_type == APP_LOG) {
     gRpcLogger_->pushAppLog(m_ss.str());
