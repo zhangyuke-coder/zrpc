@@ -1,6 +1,7 @@
 #pragma once 
-
+#include <queue>
 #include <pthread.h>
+#include "zrpc/base/coroutine/coroutine.h"
 namespace zrpc {
 
 template <typename T> 
@@ -203,4 +204,20 @@ private:
     pthread_rwlock_t m_lock;
 };
 
+class CoroutineMutex {
+ public:
+    typedef ScopedLockImpl<CoroutineMutex> Lock;
+
+    CoroutineMutex();
+
+    ~CoroutineMutex();
+
+    void lock();
+
+    void unlock();
+    private:
+    bool m_lock {false};
+    Mutex m_mutex;
+    std::queue<Coroutine*> m_sleep_cors;
+};
 }

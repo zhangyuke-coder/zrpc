@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22.1)
 
 project(ZRPC C CXX)
-
+ENABLE_LANGUAGE(ASM)
 enable_testing()
 
 # if(NOT CMAKE_BUILD_TYPE)
@@ -117,4 +117,4 @@ link_libraries(/usr/lib/libtinyxml.a)
 message(STATUS "CXX_FLAGS = " ${CMAKE_CXX_FLAGS} " " ${CMAKE_CXX_FLAGS_${BUILD_TYPE}})
 
 add_subdirectory(zrpc)
-# add_subdirectory(testcases)
+add_subdirectory(tests)

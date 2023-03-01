@@ -1,6 +1,0 @@
-
-add_executable(mutex_test mutex_test.cc)
-target_link_libraries(mutex_test zrpc_base)
-
-add_executable(log_test log_test.cc)
-target_link_libraries(log_test zrpc)
