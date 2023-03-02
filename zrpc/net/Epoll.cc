@@ -35,7 +35,29 @@ void Epoll::epoll_add(SP_Channel request, int timeout) {
     struct epoll_event event;
     event.data.fd = fd;
     event.events = request->getEvents();
+    //*****************************************
+    Coroutine* cur_cor = Coroutine::GetCurrentCoroutine() ;
 
+    if (event.events & zrpc::IOEvent::READ) {
+		DebugLog << "fd:[" << request->getFd() << "], register read event to epoll";
+		// fd_event->setCallBack(tinyrpc::IOEvent::READ, 
+		// 	[cur_cor, fd_event]() {
+		// 		tinyrpc::Coroutine::Resume(cur_cor);
+		// 	}
+		// );
+		request->setCoroutine(cur_cor);
+	}
+	if (event.events & zrpc::IOEvent::WRITE) {
+		DebugLog << "fd:[" << request->getFd() << "], register write event to epoll";
+		// fd_event->setCallBack(tinyrpc::IOEvent::WRITE, 
+		// 	[cur_cor]() {
+		// 		tinyrpc::Coroutine::Resume(cur_cor);
+		// 	}
+		// );
+		request->setCoroutine(cur_cor);
+	}
+    //*****************************************
+    
     request->EqualAndUpdateLastEvents();
 
     fd2chan_[fd] = request;

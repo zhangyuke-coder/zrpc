@@ -8,11 +8,11 @@ using namespace zrpc;
 
 int main() {
     InfoLog << "successasdfasdfffffffffffffffffffff";
-    InfoLog << "asdf";
-    InfoLog << "qwer";
-    InfoLog << "azxcvsdf";
-    InfoLog << "785876";
-    AppInfoLog << "zzzz";
+    // InfoLog << "asdf";
+    // InfoLog << "qwer";
+    // InfoLog << "azxcvsdf";
+    // InfoLog << "785876";
+    // AppInfoLog << "zzzz";
 
     std::this_thread::sleep_for(std::chrono::seconds(3));
     // InfoLog << "qwerwqerwqerwer";

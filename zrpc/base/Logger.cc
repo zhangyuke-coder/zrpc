@@ -68,15 +68,17 @@ void Logger::loopFunc() {
 }
 
 void Logger::pushRpcLog(const std::string& msg) {
-    Mutex::Lock lock(m_buff_mutex);
+    // Mutex::Lock lock(m_buff_mutex);
+    m_buff_mutex.lock();
     m_buffer.push_back(std::move(msg));
-    lock.unlock();
+    // lock.unlock();
+    m_buff_mutex.unlock();
 }
 
 void Logger::pushAppLog(const std::string& msg) {
     Mutex::Lock lock(m_app_buff_mutex);
     m_app_buffer.push_back(std::move(msg));
-    lock.unlock();
+    // lock.unlock();
 }
 
 void Logger::flush() {

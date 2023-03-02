@@ -5,8 +5,14 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
-
+#include "zrpc/base/coroutine/coroutine.h"
 namespace zrpc {
+    
+enum IOEvent {
+  READ = EPOLLIN,	
+  WRITE = EPOLLOUT,  
+  ETModel = EPOLLET,
+};
 class EventLoop;
 typedef std::function<void()> CallBack;
 class Channel {
@@ -77,6 +83,9 @@ public:
     }
     
     __uint32_t getLastEvents() { return lastEvents_; }
+    void setCoroutine(Coroutine* cor) {
+        cor_ = cor;
+    }
 private:
 
 
@@ -92,5 +101,6 @@ public:
     CallBack writeHandler_;
     CallBack errorHandler_;
     CallBack connHandler_;
+    Coroutine* cor_; //当前channel持有协程
 };
 }
