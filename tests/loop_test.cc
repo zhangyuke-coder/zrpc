@@ -13,6 +13,8 @@
 #include "zrpc/net/EventLoop.h"
 #include "zrpc/net/Channel.h"
 #include "zrpc/net/Epoll.h"
+#include "zrpc/net/EventLoopThread.h"
+#include "zrpc/net/EventLoopThreadPool.h"
 #include <functional>
 #include <iostream>
 #define	MAXEPOLL	10000	/* 对于服务器来说，这个值可以很大的！ */
@@ -101,13 +103,16 @@ int main( int argc, char ** argv )
 	}
 
 
-	zrpc::EventLoop* loop = new zrpc::EventLoop();
-	auto channel = make_shared<zrpc::Channel>(loop, listen_fd);
+	zrpc::EventLoop* mainloop = new zrpc::EventLoop();
+	zrpc::EventLoopThreadPool* pool = new zrpc::EventLoopThreadPool(mainloop, 4);
+	pool->start();
+	auto channel = make_shared<zrpc::Channel>(mainloop, listen_fd);
 	channel->setEvents(EPOLLIN | EPOLLET);
 
 	channel->setReadHandler(std::bind(readsd));
-	loop->addToPoller(channel, 0);
+	mainloop->addToPoller(channel, 0);
 
 
-	loop->loop();
+	mainloop->loop();
+	delete pool;
 }
