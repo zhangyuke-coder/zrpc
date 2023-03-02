@@ -15,6 +15,7 @@
 #include "zrpc/net/Epoll.h"
 #include "zrpc/net/EventLoopThread.h"
 #include "zrpc/net/EventLoopThreadPool.h"
+#include "zrpc/config.h"
 #include <functional>
 #include <iostream>
 #define	MAXEPOLL	10000	/* 对于服务器来说，这个值可以很大的！ */
@@ -39,6 +40,8 @@ int setnonblocking( int fd )
 
 int main( int argc, char ** argv )
 {
+	zrpc::Config::ptr config(new zrpc::Config("./test_tinypb_server.xml"));
+	config->readConf();
 	int 		listen_fd;
 	int 		conn_fd;
 	int 		epoll_fd;

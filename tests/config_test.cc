@@ -1,4 +1,4 @@
-#include "../config.h"
+#include "zrpc/config.h"
 #include "zrpc/base/logging.h"
 #include <thread>
 #include <iostream>       // std::cout, std::endl
